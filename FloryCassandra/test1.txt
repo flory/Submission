@@ -1,0 +1,48 @@
+root@champion:~# irb
+irb(main):001:0> require 'rubygems'
+=> true
+irb(main):002:0> require 'cassandra'
+=> true
+irb(main):003:0> include SimpleUUID
+=> Object
+irb(main):004:0> messages = Cassandra.new('MainProject')
+=> #<Cassandra:-608439658, @keyspace="MainProject", @schema={}, @servers=["127.0.0.1:9160"]>
+irb(main):005:0> messages = Cassandra.new('ADSProject')
+=> #<Cassandra:-608479048, @keyspace="ADSProject", @schema={}, @servers=["127.0.0.1:9160"]>
+irb(main):006:0> uuid = UUID.new
+=> <UUID#-608490958 time: Wed Jun 16 15:10:50 +0100 2010, usecs: 405734 jitter: 12752837983748968346>
+irb(main):007:0> messages.insert(:Messages, '0001_in', {uuid=>'{"username":"flory", "age":"34", "location":"Windhoek Namibia", "subject":"Project Submission","body":"Dear Dr I did not have chance for GUI", "read":"0"}'})
+=> nil
+irb(main):008:0> messages.insert(:Messages, '0002_out', {uuid=>'{"username":"Dr Jose", "age":"46", "location":"Washignton DC", "subject":"Project Submission Reply", "body":"Do you need an extension?", "read":"0"}'})
+=> nil
+irb(main):009:0> uuid = UUID.new
+=> <UUID#-608676608 time: Wed Jun 16 15:26:54 +0100 2010, usecs: 710016 jitter: 3263557325321688200>
+irb(main):010:0> messages.insert(:Messages, '1001_in', {uuid=>'{"username":"Tendai", "age":"29", "location":"Zimbabwe Harare", "subject":"Did you like this course?", "body":"It was a bit challenging but interested in overall :-)","read":"0"}'})
+=> nil
+irb(main):011:0> messages.insert(:Messages, '1002_out', {uuid=>'{"username":"Simon", "age":"36", "location":"South Africa Pretoria", "subject":"Course Feedback", "body":"In my opinion the course time frame was not sufficient :-)", "read":"0"}'})
+=> nil
+irb(main):012:0> messages.insert(:MessageReplies, uuid, {UUID.new=>'{"username":"Simon", "age":"36", "location":"South Africa Pretoria", "body":"Great, I think I have to start developing using cassandra!"}'})
+ArgumentError: Key <UUID#-608676608 time: Wed Jun 16 15:26:54 +0100 2010, usecs: 710016 jitter: 3263557325321688200> must be a String for "/usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/cassandra.rb:101:in `insert'".
+	from /usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/helpers.rb:8:in `extract_and_validate_params'
+	from /usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/helpers.rb:7:in `each'
+	from /usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/helpers.rb:7:in `extract_and_validate_params'
+	from /usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/cassandra.rb:101:in `insert'
+	from (irb):12
+	from :0
+irb(main):013:0> uuid = UUID.new
+=> <UUID#-608803568 time: Wed Jun 16 15:34:56 +0100 2010, usecs: 901734 jitter: 1254299715397776263>
+irb(main):014:0> messages.insert(:MessageReplies, uuid, {UUID.new=>'{"username":"Simon", "age":"36", "location":"South Africa Pretoria", "body":"Great, I think I have to start developing using cassandra!"}'})
+ArgumentError: Key <UUID#-608803568 time: Wed Jun 16 15:34:56 +0100 2010, usecs: 901734 jitter: 1254299715397776263> must be a String for "/usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/cassandra.rb:101:in `insert'".
+	from /usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/helpers.rb:8:in `extract_and_validate_params'
+	from /usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/helpers.rb:7:in `each'
+	from /usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/helpers.rb:7:in `extract_and_validate_params'
+	from /usr/lib/ruby/gems/1.8/gems/cassandra-0.8.2/lib/cassandra/cassandra.rb:101:in `insert'
+	from (irb):14
+	from :0
+irb(main):015:0>
+
+irb(main):006:0> collection = messages.get(:Messages, '1001_in', :reversed=>'true').to_a
+=> [[<UUID#-608192978 time: Wed Jun 16 15:26:54 +0100 2010, usecs: 710016 jitter: 3263557325321688200>, "{\"username\":\"Tendai\", \"age\":\"29\", \"location\":\"Zimbabwe Harare\", \"subject\":\"Did you like this course?\", \"body\":\"It was a bit challenging but interested in overall :-)\",\"read\":\"0\"}"]]
+irb(main):007:0> 
+
+

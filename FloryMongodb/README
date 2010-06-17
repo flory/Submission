@@ -1,0 +1,10 @@
+//Author: Flory Ataka
+//Date: 17-June- 2010
+//This guide describes the sequence to be done for testing my scripts
+*******************************************************************************************************
+1. Before testing the submitting scripts, make sure that Mongodb server is up and running.
+2. the apache and Php must be installed on your machine and should be up and running
+3. More important point is you don't have to create a new database, because I have used the default 
+test database.
+4.For adding new tag and comment from the GUI, you need to launch the html files first, otherwise you will 
+insert empty value to the table.

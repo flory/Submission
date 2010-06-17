@@ -1,0 +1,38 @@
+//From the mongo client,I have issued db.collection.find() to view and list objects of my author collector
+
+> db.author.find()
+{ "_id" : ObjectId("4c178b1c787375ee14000000"), "first_name" : "Flory", "last_name" : "Ataka", "email" : "flory@webmail.co.za", "physical_address" : [
+	{
+		"country" : "NAMIBIA",
+		"zip" : "9000",
+		"address1" : "kingfisher"
+	},
+	{
+		"city" : "WINDHOEK",
+		"PO_box" : "32541",
+		"address1" : "Pioniers Park"
+	}
+], "sessions" : 0 }
+{ "_id" : ObjectId("4c178c357873751015000000"), "first_name" : "Flory", "last_name" : "Ataka", "email" : "flory@webmail.co.za", "physical_address" : [
+	{
+		"country" : "NAMIBIA",
+		"zip" : "9000",
+		"address1" : "kingfisher"
+	},
+	{
+		"city" : "WINDHOEK",
+		"PO_box" : "32541",
+		"address1" : "Pioniers Park"
+	}
+], "sessions" : 0 }
+{ "_id" : ObjectId("4c1792dc787375ec14000000"), "tag" : "student2", "title" : "Poly second year student", "summary" : "refer to the poly prospectus", "body" : "foreign student", "post_date" : "17/08/2010" }
+{ "_id" : ObjectId("4c17a7f17873756e15000000"), "tag" : "student2", "title" : "Poly second year student", "summary" : "refer to the poly prospectus", "body" : "foreign student", "post_date" : "17/08/2010" }
+{ "_id" : ObjectId("4c17aae1787375ec14010000"), "commenter_name" : "", "content" : " " }
+{ "_id" : ObjectId("4c17af93787375eb14030000"), "tag" : "student2", "title" : "Poly second year student", "summary" : "refer to the poly prospectus", "body" : "foreign student", "post_date" : "17/08/2010" }
+{ "_id" : ObjectId("4c17afc1787375ec14020000"), "tag" : "student2", "title" : "Poly second year student", "summary" : "refer to the poly prospectus", "body" : "foreign student", "post_date" : "17/08/2010" }
+{ "_id" : ObjectId("4c17b3a77873753d1d000000"), "tag" : "employee", "title" : "Mrs.", "summary" : "silnam", "body" : "System Engineer", "post_date" : "30/06/2010" }
+{ "_id" : ObjectId("4c17b848787375ed14010000"), "commenter_name" : "", "content" : " " }
+{ "_id" : ObjectId("4c17b9b17873753c1d000000"), "tag" : "House", "title" : "Madam", "summary" : "Marie\' to John", "body" : "Always faithful", "post_date" : "04/09/2010" }
+{ "_id" : ObjectId("4c17ba637873753d1d020000"), "commenter_name" : "Luis", "content" : "malade" }
+> 
+
